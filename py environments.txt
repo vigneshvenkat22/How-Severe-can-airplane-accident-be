@@ -1,3 +1,0 @@
-1) python -m venv NAME
-2) SRC/SCRIPTS/ACTIVATE.BAT   2.1) pip list
-3) To remove rmdir NAME /s
