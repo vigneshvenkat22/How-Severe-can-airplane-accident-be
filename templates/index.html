@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+
+<html >
+
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Severity Classifier</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="%25257B%25257B%252520url_for('static',%252520filename='../../static/css/style.css">
+
+
+
+</head>
+
+
+
+<body>
+
+    <div class="login">
+
+        <h2 style="text-shadow: salmon;">How severe the accident could be ? </h2>
+
+
+
+        <!-- Main Input For Receiving Query to our ML -->
+
+       <form action='../predict' method="post">
+
+            <input type="text" name="Safety_Score" placeholder="Safety Score" required="required"  />
+
+            <input type="text" name="Adverse_Weather_Metric" placeholder="Adverse Weather Meric" required="required" />
+
+            <input type="text" name="Control_Metric" placeholder="Control Metric" required="required"  />
+            <input type="text" name="Days_Since_Inspection" placeholder="Days Since Inspection" required="required"/>
+
+            <button placeholder="submit" class="btn btn-primary btn-block btn-large">Click to Predict</button>
+
+        </form>
+
+
+
+        <br>
+
+        <br>
+        <h4>{{ text }}</h4>
+        <h2 style="text-decoration: underline; color: red ;font-family: 'Gill Sans';"> {{predictiontext}} </h2>
+
+
+
+    </div>
+
+
+
+
+
+</body></html>
