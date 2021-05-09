@@ -2,6 +2,7 @@ aircraft.py
 request.py
 *.csv
 */.vscode/*
+hello.txt
 
 
 
