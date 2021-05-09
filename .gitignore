@@ -3,6 +3,7 @@ request.py
 *.csv
 */.vscode/*
 hello.txt
+.vscode
 
 
 
