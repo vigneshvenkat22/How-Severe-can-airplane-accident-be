@@ -4,7 +4,10 @@ request.py
 */.vscode/*
 hello.txt
 .vscode
-
+test.csv
+train.csv
+style.min.css
+info.ipynb
 
 
 

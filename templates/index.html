@@ -1,69 +1,99 @@
-
 <!DOCTYPE html>
 
-<html >
-
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<html>
 
 <head>
-
-    <meta charset="UTF-8">
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Severity Classifier</title>
 
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <meta name="description" content=" How severe the accident could be  ">
+    <meta name="keywords" content="Machine learning tools classifier predictions artificaial inlelligence">
 
-    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-
-    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='pyee.png') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" href="%25257B%25257B%252520url_for('static',%252520filename='../../static/css/style.css">
-
-
+    <link rel="stylesheet" href="../static/css/style.css">
 
 </head>
 
-
-
 <body>
-
+    <img class="center" src="{{url_for('static', filename='map.jpg')}}" />
     <div class="login">
-
-        <h2 style="text-shadow: salmon;">How severe the accident could be ? </h2>
-
-
-
+        <div class="tooltipmsg">
+            <span class="tooltiptextmsg">Now Imagine you have been hired by a leading airline. You are required to build Machine Learning models to anticipate and classify the severity of any airplane accident based on past incidents. With this, all airlines, even the entire aviation industry, can predict the severity of airplane accidents caused due to various factors and, correspondingly…
+            </span>
+            <h2 style="text-shadow: salmon;">How Severe can a Airplane Accident be ? </h2>
+        </div>
         <!-- Main Input For Receiving Query to our ML -->
-
-       <form action='../predict' method="post">
-
-            <input type="text" name="Safety_Score" placeholder="Safety Score" required="required"  />
-
-            <input type="text" name="Adverse_Weather_Metric" placeholder="Adverse Weather Meric" required="required" />
-
-            <input type="text" name="Control_Metric" placeholder="Control Metric" required="required"  />
-            <input type="text" name="Days_Since_Inspection" placeholder="Days Since Inspection" required="required"/>
-
-            <button placeholder="submit" class="btn btn-primary btn-block btn-large">Click to Predict</button>
-
+        <form action='../predict' method="post">
+            <div class="tooltip">
+                <span class="tooltiptext">Safety score 1 - 100</span>
+                <input type="text" name="Safety_Score" placeholder="Safety Score" required="required" />
+            </div>
+            <div class="tooltip">
+                <span class="tooltiptext">Adverse weather range from Good 0 to 2.36 (bad).</span>
+                <input type="text" name="Adverse_Weather_Metric" placeholder="Adverse Weather " required="required" />
+            </div>
+            <div class="tooltip">
+                <span class="tooltiptext">control Metrics 0 - 100</span>
+                <input type="text" name="Control_Metric" placeholder="Control Metric" required="required" />
+            </div>
+            <div class="tooltip">
+                <span class="tooltiptext">Number of Days since last inspection 1 - 25 </span>
+                <input type="text" name="Days_Since_Inspection" placeholder="Days Since Inspection" required="required" />
+            </div>
+            <button placeholder="submit" class="btn btn-primary btn-block btn-large">Submit</button>
         </form>
-
-
-
-        <br>
-
-        <br>
-        <h4>{{ text }}</h4>
-        <h2 style="text-decoration: underline; color: red ;font-family: 'Gill Sans';"> {{predictiontext}} </h2>
-
-
-
     </div>
-
-
-
-
-
+    <div class="output">
+        <div class="tooltip">
+            <span class="tooltiptext"> click "submit" to forecast</span>
+            <h2>
+                {{predictiontext}}
+            </h2>
+        </div>
+    </div>
+    <div class="about">
+        <h2 class="instructions">Features Description</h2>
+        <ul>
+            <li>
+                <div>Days Since Inspection</div>
+                The purpose of an aircraft inspection program is to ensure that the aircraft is airworthy.This refers to the condition of the aircraft relative to wear and deterioration (e.g., skin corrosion, window delamination/crazing, fluid leaks, and tire wear beyond specified limits)
+            </li>
+            <li>
+                <div>Control Metrics</div>
+                This metric measures the oscillations of the adaptive control signal relative to the ideal control signal of the reference model. ... The error in the cross coupled product terms between the response of a flight control system and that of a reference model measures the magnitude of the cross coupling.
+                The control metrics are a percetage of control the plane had quick before the occuring the accident (0-100)
+            </li>
+            <li>
+                <div>Adverse Weather Conditions</div>
+                Reduced visibility, associated with cloud, mist, fog, or sand storms, can make safe flight difficult or even impossible, even with the help of technology (Instrument Landing System (ILS), weather radar, synthetic vision systems, etc) ... Precipitation; for example rain, hail, and snow affect aerodynamics and visibility.
+            </li>
+            <li>
+                <div>Severity </div>
+                An aviation accident is defined by the Convention on International Civil Aviation Annex 13 as an occurrence associated with the operation of an aircraft, which takes place from the time any person boards the aircraft with the intention of flight until all such persons have disembarked, and in which a)
+                Minor Damage And Injuries, b)Significant Damage And Fatalities, c)Significant Damage And Serious Injuries, d) Highly Fatal And Damaging accidents
+            </li>
+            <li>
+                <div>Safety Score</div> Aviation safety means the state of an aviation system or organization in which risks associated with aviation activities, related to, or in direct support of the operation of aircraft, are reduced and controlled to an acceptable level. It encompasses the theory, practice, investigation, and categorization of flight failures, and the prevention of such failures through regulation, education, and training. It can also be applied in the context of campaigns that inform the public as to the safety of air travel.
+            </li>
+            <li>
+                <div>Model Building</div>
+                The underlying "MACHINE LEARNING CLASSIFIER" works using a ensemble based technique.
+            </li>
+            <li>
+                <div>Use Case</div>
+                Flying has been the go-to mode of travel for years now; it is time-saving, affordable, and extremely convenient. According to the FAA, 2,781,971 passengers fly every day in the US, as in June 2019. Passengers reckon that flying is very safe, considering strict inspections are conducted and security measures are taken to avoid and/or mitigate any mishappenings. However, there remain a few chances of unfortunate incidents.
+            </li>
+        </ul>
+        <div class="bottom">
+            <a href="https://www.python.org/downloads/release/python-394/">
+                <img class="center" src="{{url_for('static', filename='proj_logo.png')}}" />
+            </a>
+        </div>
+    </div>
 </body></html>
