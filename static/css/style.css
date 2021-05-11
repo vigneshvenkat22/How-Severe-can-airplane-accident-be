@@ -317,7 +317,23 @@ input:focus {
     right: 110%;
     font-size: 14px;
 }
-
+.tooltipmsg .tooltiptextmsg {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  
+}
 /*
 .tooltipmsg .tooltiptextmsg::after {
   content: " ";
@@ -342,41 +358,28 @@ input:focus {
   border-style: solid;
   border-color: transparent transparent transparent black;
 }
-
-.tooltipmsg .tooltiptextmsg {
-  visibility: hidden;
-  width: 120px;
-  background-color: white;
-  color: #000000;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 100%;
-  left: 50%;
-  margin-left: -60px;
-  
-}
-
+/* Position the tooltip */
 .tooltipmsg:hover .tooltiptextmsg {
 visibility: visible;
-  width: 250px;
+  width: 200px;
   background-color: white;
   color: #000000;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-  
-  /* Position the tooltip */
   position: absolute;
   z-index: 1;
   top: 100%;
   left: 50%;
   margin-left: -60px;
+    font-size: 14px;
+    letter-spacing: 1px;
+        
 }
+  
+ .tooltipmsg  h2 {
+     text-shadow: salmon;
+    }
 .tooltip:hover .tooltiptext {
     visibility: visible;
     animation-name: ani;
