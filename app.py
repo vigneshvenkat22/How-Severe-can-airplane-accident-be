@@ -16,14 +16,22 @@ def home():
 	return render_template('index.html')
 
 # prediction
+
 @app.route('/predict',methods=['POST'])
 def predict():
 	int_feature = [float(x) for x in request.form.values()]
 	final_features = [np.array(int_feature)]
-	prediction = model.predict(final_features)
+	prediction = model.predict(final_features[:])
 	output = prediction[0]
 	x = "The Severity of the accident could be "
-	y = output.replace("_"," ")
+	if output== 0:
+		y = 'Highly Fatal and Damaging'
+	elif output==1:
+		y = 'Significant Damage and Serious Injuries'	
+	elif output == 2:
+			y = 'Minor Damage and Injuries'
+	elif output ==3:
+			y = 'Significant Damage and Fatalities'
 	return render_template('index.html',text = x ,predictiontext= y)
 
 
